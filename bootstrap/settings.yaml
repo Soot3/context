@@ -5,7 +5,12 @@ metadata:
   namespace: plrl-deploy-operator
 spec:
   managementRepo: Soot3/context
-
+  prometheusConnection:
+    host: https://dev.drafttests.click/select/0/prometheus
+    passwordSecretRef:
+      key: password
+      name: basic-auth-prom
+    user: plrl
   stacks:
     jobSpec:
       namespace: plrl-deploy-operator
