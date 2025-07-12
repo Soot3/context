@@ -1,0 +1,36 @@
+apiVersion: deployments.plural.sh/v1alpha1
+kind: ServiceDeployment
+metadata:
+  name: grafana-mgmt
+  namespace: apps
+spec:
+  name: grafana
+  namespace: grafana
+  git:
+    folder: helm/grafana
+    ref: main
+  repositoryRef:
+    kind: GitRepository
+    name: infra
+    namespace: infra
+  helm:
+    version: "8.6.x"
+    chart: grafana
+    url: https://grafana.github.io/helm-charts
+    valuesFiles:
+    - grafana.yaml.liquid
+  
+  contexts:
+  - "plrl/cloud/observability"
+  
+  imports:
+  - stackRef:
+      name: grafana-mgmt
+      namespace: apps
+  configuration:
+    cluster: mgmt
+    stackName: grafana-mgmt
+  clusterRef:
+    kind: Cluster
+    name: mgmt
+    namespace: infra
