@@ -4,7 +4,7 @@ metadata:
   name: infra
   namespace: infra
 spec:
-  url: 
+  url: git@github.com:Soot3/context.git
 ---
 apiVersion: deployments.plural.sh/v1alpha1
 kind: Cluster
