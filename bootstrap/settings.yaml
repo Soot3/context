@@ -4,7 +4,7 @@ metadata:
   name: global
   namespace: plrl-deploy-operator
 spec:
-  managementRepo: 
+  managementRepo: Soot3/context
 
   stacks:
     jobSpec:
